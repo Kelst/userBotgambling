@@ -33,7 +33,8 @@ const faqList = require('./controll/myApp/faqList');
 const faqItem = require('./controll/myApp/faqItem');
 
 
-let messageId =require("./tools/messageId")
+let messageId =require("./tools/messageId");
+const deleteGlobalLink = require('./controll/myApp/deleteGlobalLink');
 
 mongoose.connect(process.env.DB_CONNECTION, { useNewUrlParser: true }, () => console.log('Connect DB'));
 const bot = new TelegramApi(process.env.TOKKEN, { polling: true });
@@ -218,6 +219,12 @@ if(data==bot_const_menu.faq){
 if(data.split("|")[0]=="faqItem"){
 	state.control.type=bot_const_menu.faq;
 	await faqItem(id,bot,query,data)
+}
+//видалення силки
+if(data.split("|")[0]=="delete_global"){
+	state.control.type="delete_global";
+	///await faqItem(id,bot,query,data)
+	await deleteGlobalLink(id,state,bot,query)
 }
  
 }); 
