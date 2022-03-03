@@ -44,27 +44,26 @@ module.exports=async(id,state,bot,msg,text)=>{
 
 
 
-    if(text.split("/").length===3){
-    
-        interval=text.split("/")[0]
-        start=text.split("/")[1]
-        count=text.split("/")[2]
+    if(text.split("*").length===3){
+        start=text.split("*")[0]
+        interval=text.split("*")[1]
+        count=text.split("*")[2]
         if(checkNumber(interval)===false||checkNumber(start)===false||checkNumber(count)===false){
             returnWrongRequest()
             return
         }
       
-    }else if(text.split("/").length===2){
-        interval=text.split("/")[0]
-        start=text.split("/")[1]
+    }else if(text.split("*").length===2){
+        interval=text.split("*")[1]
+        start=text.split("*")[0]
         count=10
         if(checkNumber(interval)===false||checkNumber(start)===false||checkNumber(count)===false){
             returnWrongRequest()
             return
         }
-    }else if(text.split("/").length===1){
-        interval=text.split("/")[0]
-        start=0;
+    }else if(text.split("*").length===1){
+        start=text.split("*")[0]
+        interval=240;
         count=10;
         if(checkNumber(interval)===false||checkNumber(start)===false||checkNumber(count)===false){
             returnWrongRequest()
@@ -85,7 +84,7 @@ module.exports=async(id,state,bot,msg,text)=>{
     }
     await setISC({id:state.control.idApp,interval:interval,start:start,count:count})
       state.control.type=""
-      bot.sendMessage(id,`Интервал старт и количество пушей изменены`,{
+      bot.sendMessage(id,`Данные изменены.`,{
           reply_markup: {
               inline_keyboard:[[{
                   text: `⬅️  Назад`, callback_data: `autopush`

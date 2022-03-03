@@ -47,13 +47,12 @@ module.exports=async(id,state,bot,query)=>{
         text: `${choseApp[0]?.save_last_url===true?"Кэшировать страницу":"Не кэшировать страницу"}`
     })   
        
-    const textMessage=`${choseApp[0]?.name} (${getConst().get(choseApp[0]?.type)}) - ${choseApp[0]?.price}$\n\nРежим работы: ${choseApp[0]?.naming.length!=0?" нейминги":" глобальная ссылка"}\n\nГлобальная ссылка: ${choseApp[0]?.url===""?"не установлена":choseApp[0]?.url}\nНейминги - ${naming}\n\n${choseApp[0]?.google_play_url}`
+    const textMessage=`${choseApp[0]?.name} (${getConst().get(choseApp[0]?.type)}) - ${choseApp[0]?.price}$\n${choseApp[0]?.google_play_url}\n\nРежим работы: ${choseApp[0]?.naming.length!=0?" нейминги":" глобальная ссылка"}\n\nГлобальная ссылка: ${choseApp[0]?.url===""?"не установлена":choseApp[0]?.url}\nНейминги - ${naming}\n\n`
 
     
         bot.editMessageText(textMessage, {
             chat_id: chat.id,
             message_id: message_id,
-            parse_mode: "Markdown",
             reply_markup: {
                 inline_keyboard: [...keyboard,[{
                     text: `⬅️  Назад`, callback_data: `my_app`

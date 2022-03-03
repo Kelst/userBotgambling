@@ -15,8 +15,7 @@ module.exports=async(id,state,bot,query)=>{
 ]
 
 if(choseApp.length>0)
-  { await bot.sendMessage(id, `*${choseApp[0]?.name} (${getConst().get(choseApp[0]?.type)})*\n\nЧтобы получить доступ к этому приложению, нажмите “Купить” и напишите об этом главному разработчику — тут можно задать интересующие вопросы и сделать оплату. После оплаты вы получаете полный доступ к настройке и использованию этого приложения.\n\nПодробную информацию о возможностях нашего сервиса можно узнать в разделе “FAQ” на главной странице.\n\n${choseApp[0].image_link}`, {
-        parse_mode: "Markdown",
+  { await bot.sendMessage(id, `${choseApp[0]?.name} (${getConst().get(choseApp[0]?.type)})\n\nЧтобы получить доступ к этому приложению, нажмите “Купить” и напишите об этом главному разработчику — тут можно задать интересующие вопросы и сделать оплату. После оплаты вы получаете полный доступ к настройке и использованию этого приложения.\n\nПодробную информацию о возможностях нашего сервиса можно узнать в разделе “FAQ” на главной странице.\n\n${choseApp[0].image_link}`, {
         reply_markup: {
             inline_keyboard: [...keyboardApp, [{
                 text: `⬅️  Назад`, callback_data: `${state.control.type}`
@@ -27,7 +26,6 @@ if(choseApp.length>0)
     });
 }else {
     await bot.sendMessage(id, `к сожалению, прила продана, или заблокирована.`, {
-        parse_mode: "Markdown",
         reply_markup: {
             inline_keyboard: [ [{
                 text: `⬅️  Назад`, callback_data: `${state.control.type}`

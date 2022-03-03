@@ -8,7 +8,7 @@ const removeMessage = require("../../tools/removeMessage");
 module.exports=async(id,state,bot,query)=>{
     const choseApp=await getAppById(state.control.idApp);
     state.control.idApp=choseApp[0]?._id;
-    bot.sendMessage(id,`Введите данные в следующем формате:\nинтервал/старт/количество\nинтервал и старт вводятся в минутах\nПример: 400/60/10`,{
+    bot.sendMessage(id,`Введите время старта, интервал, максимальное к-во уведомлений в формате времяСтарта*интервал*максКоличество.\n\nНа пример, 60*240*7  — это значит, что первое уведомление будет показано через 60 минут после установки, следующие — через 240 минут. При этом, всего будет отправлено 7 уведомлений.`,{
         reply_markup: {
             inline_keyboard:[[{
                 text: `⬅️  Назад`, callback_data: `autopush`

@@ -13,7 +13,7 @@ module.exports=async(id,state,bot,query,mode=false)=>{
     state.control.idApp=choseApp[0]?._id;
 
  if(mode===false)
-    {bot.sendMessage(id,`Введите title push сообщение:`,{
+    {bot.sendMessage(id,`Введите текст push-уведомления, которое будет видеть пользователь:`,{
         reply_markup: {
             inline_keyboard:[[{
                 text: `⬅️  Назад`, callback_data: `show_my_app|${state.control.idApp}`
@@ -22,7 +22,7 @@ module.exports=async(id,state,bot,query,mode=false)=>{
     }).then(async () => {
         await removeMessage(query.message.chat.id, bot, query.message.message_id); 
     });}else {
-        bot.sendMessage(id,`Введите текст push сообщение:`,{
+        bot.sendMessage(id,`Введите текст push-уведомления, которое будет видеть пользователь:`,{
             reply_markup: {
                 inline_keyboard:[[{
                     text: `⬅️  Назад`, callback_data: `autopush`

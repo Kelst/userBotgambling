@@ -47,9 +47,8 @@ module.exports=async(id,state,bot,query)=>{
         bot.answerCallbackQuery( query.id, {text: 'Вы добавили нейминг'});
     }
     const mapName= getConst();
-    const textMessage=`${choseApp[0]?.name} (${mapName.get(choseApp[0]?.type)}) - ${choseApp[0]?.price}$\n\nРежим работы: ${choseApp[0]?.naming.length!=0?" нейминги":" глобальная ссылка"}\n\nГлобальная ссылка: ${choseApp[0]?.url===""?"не установлена":choseApp[0]?.url}\nНейминги: ${naming}\n\n${choseApp[0]?.google_play_url}`
+    const textMessage=`${choseApp[0]?.name} (${mapName.get(choseApp[0]?.type)}) - ${choseApp[0]?.price}$\n${choseApp[0]?.google_play_url}\n\nРежим работы: ${choseApp[0]?.naming.length!=0?" нейминги":" глобальная ссылка"}\n\nГлобальная ссылка: ${choseApp[0]?.url===""?"не установлена":""+choseApp[0]?.url+""}\nНейминги: ${naming}\n\n`
     bot.sendMessage(id,textMessage, {
-        parse_mode: "Markdown",
         reply_markup: {
             inline_keyboard: [...keyboard,[{
                 text: `⬅️  Назад`, callback_data: `my_app`

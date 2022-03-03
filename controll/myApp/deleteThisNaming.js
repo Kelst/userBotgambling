@@ -26,7 +26,6 @@ module.exports=async(id,state,bot,query,appId,namingName)=>{
         bot.editMessageText(`Чтобы удалить нейминг, выберите его из списка:`, {
             chat_id: chat.id,
             message_id: message_id,
-            parse_mode: "Markdown",
             reply_markup: {
                 inline_keyboard:[...keyboard_naming_list,[{
                     text: `⬅️  Назад`, callback_data: bot_const_menu.setNaming

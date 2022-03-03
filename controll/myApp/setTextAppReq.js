@@ -36,7 +36,7 @@ module.exports=async(id,state,bot,msg,text,type=false)=>{
         await setText({id:state.control.idApp,text:text});
      
       state.control.type=""
-      bot.sendMessage(id,`Текст автопуша изменен`,{
+      bot.sendMessage(id,`Текст push-уведомления установлен.`,{
           reply_markup: {
               inline_keyboard:[[{
                   text: `⬅️  Назад`, callback_data: `autopush`

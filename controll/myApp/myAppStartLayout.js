@@ -31,7 +31,6 @@ constAB.set("active","Активно")
             ]
         })
         bot.sendMessage(id,`Мои приложения\n\nАктивные - ${actBanApp.act}\nБан - ${actBanApp.ban}`, {
-            parse_mode: "Markdown",
             reply_markup: {
                 inline_keyboard: [...keyboard, nav_keyboard[1]]
             }
@@ -40,7 +39,6 @@ constAB.set("active","Активно")
         }); 
     }else{
         bot.sendMessage(id,`Как только вы оплатите приложение, вся его конфигурация будет происходить здесь.`, {
-            parse_mode: "Markdown",
             reply_markup: {
                 inline_keyboard: [nav_keyboard[1]] 
             }
