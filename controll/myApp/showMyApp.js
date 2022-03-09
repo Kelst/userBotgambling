@@ -9,7 +9,7 @@ const ucFirst = require("../../tools/ucFirst");
 
 module.exports=async(id,state,bot,query)=>{
     console.log(query.id,"IDDDD1");
-
+    state.control.type=""
     const idApp=query.data.split("|")[1];
     const choseApp=await getAppById(idApp); 
     const naming=choseApp[0]?.naming.length!=0?choseApp[0]?.naming.map(el=>{

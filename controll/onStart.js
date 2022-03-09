@@ -16,7 +16,7 @@ module.exports=async(id,state,bot,home_keyboard,messageId,flag=false)=>{
         
         await removeMessage(id, bot,messageId-state.msgCount);
         state.msgCount=0;
-      }else await removeMessage(id, bot,messageId-1);
+      }else await removeMessage(id, bot,messageId-10);
     }
 	}) 
      

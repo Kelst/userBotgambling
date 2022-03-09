@@ -15,6 +15,7 @@ module.exports=async(id,state,bot,msg,text)=>{
 	messageId.id=msg.message_id;
 
     if(!checkNaming(msg.text)) {
+        
         bot.sendMessage(id,`Неправильный формат ввода нейминга\nпопробуйте еще раз`,{
             reply_markup: {
                 inline_keyboard:[[{
