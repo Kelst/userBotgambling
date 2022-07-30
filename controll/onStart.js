@@ -3,8 +3,8 @@ const messageId=require("../tools/messageId")
 
 module.exports=async(id,state,bot,home_keyboard,messageId,flag=false)=>{
  const textMessage=`Меню`
-    await bot.sendMessage(id, textMessage, {
-        parse_mode: "HTML",
+    await bot.sendPhoto(id,"https://ibb.co/TP1TRyx", {
+        
 
         reply_markup: JSON.stringify({ inline_keyboard: home_keyboard(state),hide_keyboard: true })
     }).then(async (e) => {

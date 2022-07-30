@@ -14,19 +14,7 @@ module.exports=async(id,state,bot,msg,text)=>{
   const message_id = msg.message_id;
   const chat=msg.chat;
 
-    if(!checkUrl(msg.text)) {
-        bot.sendMessage(id,`Ошибка ввода, введите корректную ссылку.`,{
-            reply_markup: {
-                inline_keyboard:[[{
-                    text: `⬅️  Назад`, callback_data: `show_my_app|${state.control.idApp}`
-                }],nav_keyboard[1]]
-            }
-        }).then(async () => {
-             
-            await removeMessage(id, bot,  msg.message_id-1); 
-        });
-		
-	}else{
+   
      
        state.flagLink=true;
         await setUrl({id:state.control.idApp,url:text})
@@ -41,7 +29,7 @@ module.exports=async(id,state,bot,msg,text)=>{
            
              await removeMessage(id, bot,  msg.message_id-1); 
         });
-    }
+    
 
 
 }     
