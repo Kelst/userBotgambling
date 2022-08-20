@@ -1,6 +1,7 @@
 const addNewUser = require("../requestApi/addNewUser");
 const checkUser = require("../requestApi/checkUser");
 const getUser = require("../requestApi/getUser");
+const updateUser = require("../requestApi/updateUser");
 const removeMessage = require("../tools/removeMessage");
 
 module.exports=async(id,state,bot,msg)=>{
@@ -18,5 +19,8 @@ const lastName= msg.from.last_name||"";
    if(isUser===false){
       await  addNewUser(user)
       state.userInfo=await getUser(user.userIdTelegram);
-   }else  state.userInfo=user;
+   }else {
+   let v= await updateUser(user);
+   console.log(v);
+    state.userInfo=user;}
 }     
